@@ -1,8 +1,7 @@
 import express from "express";
-const router = express.Router();
-
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+const router = express.Router();
 
 import { registerValidation, loginValidation } from "../validation.js";
 // MongoDB Model
@@ -51,7 +50,7 @@ router.post('/login', async(req, res) => {
 	if ( !validPass ) return res.status(400).send('Invalid Password');
 
 	// Create & Assign Token 
-	const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+	const token = jwt.sign({ _id: user._id }, "TOKEN_SECRET123");
 	res.header('auth-token', token).send(token);
 });
 
