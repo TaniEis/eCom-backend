@@ -2,6 +2,8 @@
 
 ## Instructions: ```npm i + npm start```
 
+## Testing: ```npm test```
+
 ### Register a user: 
 POST: ```http://localhost:3000/user/register```
 BODY: 

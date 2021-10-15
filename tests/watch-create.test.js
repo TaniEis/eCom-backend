@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import dbHandler from "./dbHandler";
+import {connect, closeDatabase, clearDatabase} from "./db-handler";
 import watchService from "./service";
 import Watch from "./model.js";
 
@@ -7,21 +7,21 @@ import Watch from "./model.js";
  * Connect to a new in-memory database before running any tests.
  */
 beforeAll(async () => {
-    await dbHandler.connect();
+    await connect();
 });
 
 /**
  * Clear all test data after every test.
  */
 afterEach(async () => {
-    await dbHandler.clearDatabase();
+    await clearDatabase();
 });
 
 /**
  * Remove and close the db and server.
  */
 afterAll(async () => {
-    await dbHandler.closeDatabase();
+    await closeDatabase();
 });
 
 /**

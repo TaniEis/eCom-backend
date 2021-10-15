@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
-import { MongoMemoryServer } from "MongoMemoryServer";
+import MongoMemoryServer from "mongodb-memory-server";
 
-const mongoMS = new MongoMemoryServer();
+const mongod = new MongoMemoryServer();
 
 /**
  * Connect to the in-memory database.
  */
  export const connect = async () => {
-    const uri = await mongoMS.getConnectionString();
+    const uri = await mongod.getConnectionString();
 
     const mongooseOpts = {
         useNewUrlParser: true,
@@ -25,7 +25,7 @@ const mongoMS = new MongoMemoryServer();
  export const closeDatabase = async () => {
     await mongoose.connection.dropDatabase();
     await mongoose.connection.close();
-    await mongoMS.stop();
+    await mongod.stop();
 };
 
 /**
