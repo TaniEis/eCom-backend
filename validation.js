@@ -19,5 +19,4 @@ const loginValidation = data => {
 	return LoginSchema.validate(data);
 };
 
-module.exports.loginValidation = loginValidation;
-module.exports.registerValidation = registerValidation;
+export {registerValidation, loginValidation};

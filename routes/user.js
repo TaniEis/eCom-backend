@@ -1,9 +1,12 @@
 import express from "express";
 const router = express.Router();
 
-import { registerValidation, loginValidation } from "../validation"
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+
+import { registerValidation, loginValidation } from "../validation.js";
 // MongoDB Model
-import User from "../models/User"
+import User from "../models/User.js";
 
 // Register User
 router.post('/register', async (req, res) => {
@@ -52,4 +55,4 @@ router.post('/login', async(req, res) => {
 	res.header('auth-token', token).send(token);
 });
 
-module.exports = router;
+export default router;
